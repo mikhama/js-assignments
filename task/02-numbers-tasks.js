@@ -22,6 +22,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
+  return (width*height);
     throw new Error('Not implemented');
 }
 
@@ -38,6 +39,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCicleCircumference(radius) {
+  return (2*Math.PI*radius);
     throw new Error('Not implemented');
 }
 
@@ -54,6 +56,7 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
+
     throw new Error('Not implemented');
 }
 
@@ -143,6 +146,7 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
+  return value.toString();
     throw new Error('Not implemented');
 }
 
@@ -169,7 +173,7 @@ function getParallelipidedDiagonal(a,b,c) {
  * @param {number} num
  * @param {number} pow
  * @return {number}
- *  
+ *
  * @example:
  *   1234, 0  => 1234
  *   1234, 1  => 1230
@@ -190,7 +194,7 @@ function roundToPowerOfTen(num, pow) {
  *
  * @param {number} n
  * @return {bool}
- * 
+ *
  * @example:
  *   4 => false
  *   5 => true
