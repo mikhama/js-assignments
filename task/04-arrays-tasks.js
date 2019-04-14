@@ -38,14 +38,14 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-  throw new Error('Not implemented');
-  // let arr = [];
-  // let sum = 1;
-  // for(let i = 1; i <= len; i++){
-  //    arr[i] = sum;
-  //    sum+=2; 
-  // }
-  // return arr;
+  // throw new Error('Not implemented');
+  let arr = [];
+   let sum = 1;
+   for(let i = 1; i <= len; i++){
+      arr.push(sum);
+      sum+=2; 
+   }
+   return arr;
 }
 
 
@@ -208,14 +208,14 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-  throw new Error('Not implemented');
-//   for(let i = 0; i<arr.length; i++){
-//     arr[i] = arr[i].join(',')    
-//     if(i != arr.length-1){
-//      arr[i]+='\n';
-//     }
-//  }
-// return arr.join('');
+  // throw new Error('Not implemented');
+  for(let i = 0; i<arr.length; i++){
+    arr[i] = arr[i].join(',')    
+    if(i != arr.length-1){
+     arr[i]+='\n';
+    }
+ }
+return arr.join('');
 }
 
 /**
