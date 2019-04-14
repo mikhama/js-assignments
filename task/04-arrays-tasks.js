@@ -596,8 +596,14 @@ function group(array, keySelector, valueSelector) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(arr, childrenSelector) {
-    throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {  
+  let rezArr = [];
+  let arrChild = [];
+  arr.map(function(val){    
+    arrChild = childrenSelector(val);    
+    rezArr = rezArr.concat(arrChild);    
+  });
+  return rezArr;
 }
 
 
@@ -614,7 +620,20 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-    throw new Error('Not implemented');
+  if(indexes.length == 1){
+    return arr[indexes[0]];
+  }
+  if(indexes.length == 2){
+    let arrInd = arr[indexes[0]];       
+    let arrIndInd = arrInd[indexes[1]];    
+    return arrIndInd;
+  }
+  if(indexes.length == 3){
+    let arrInd  = arr[indexes[0]];
+    let arrIndInd = arrInd[indexes[1]];
+    let arrIndIndInd = arrIndInd[indexes[2]];
+    return arrIndIndInd;
+  }
 }
 
 
