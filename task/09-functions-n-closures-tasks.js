@@ -180,9 +180,8 @@ function partialUsingArguments(fn, ...args) {
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(startFrom) {
-  // let num = startFrom;
-  return (() =>( startFrom++));
+function getIdGeneratorFunction(startFrom) {  
+  return (() =>(startFrom++));
 }
 
 
