@@ -148,9 +148,8 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    throw new Error('Not implemented');
+    return str.replace(/\<|\>/g, '');
 }
-
 
 /**
  * Converts all characters of the specified string into the upper case
@@ -163,7 +162,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-    throw new Error('Not implemented');
+    return str.toUpperCase();
 }
 
 /**
@@ -177,7 +176,8 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    throw new Error('Not implemented');
+    let arr = str.split(';');
+    return arr;
 }
 
 /**
@@ -224,7 +224,11 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    throw new Error('Not implemented');
+    let input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+    let index = x => input.indexOf(x);
+    let translate = x => index(x) > -1 ? output[index(x)] : x;
+    return str.split('').map(translate).join('');
 }
 
 /**
@@ -241,7 +245,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    return (typeof(value)=="string" || value instanceof String);
 }
 
 
@@ -262,6 +266,7 @@ function isString(value) {
  * @return {number}
  *
  * @example
+ * 
  *   'A♣' => 0
  *   '2♣' => 1 
  *   '3♣' => 2
@@ -270,7 +275,43 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    let suits = ["♣", "♦", "♥", "♠"];
+    let val = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+    let res = value.split('');
+    let k;
+    let s;
+    let m;
+    let b = [];
+
+    if (res.length==3) {
+        res[0] = res[0].concat(res[1]);
+        res[1] = res[2];
+    }
+
+    for (let i = 0; i < suits.length; i++) {
+        if (suits[i] == res[1]) m = i;
+        switch (m) {
+        case 0:
+            k = 0;
+            break;
+        case 1:
+            k = 13;
+            break;
+        case 2:
+            k = 26;
+            break;
+        case 3:
+            k = 39;
+            break;
+        default:
+            k=0;
+        }
+    }
+
+    for (let j = 0; j < val.length; j++) {
+        if(val[j] == res[0]) s=j;
+    }
+    return s+k;
 }
 
 
