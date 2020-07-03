@@ -203,9 +203,9 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  let top = '┌' + '─'.repeat(width - 2) + '┐\n';
-  let middle = '│' + ' '.repeat(width - 2) + '│\n';
-  let bottom = '└' + '─'.repeat(width - 2) + '┘\n';
+  const top = '┌' + '─'.repeat(width - 2) + '┐\n';
+  const middle = '│' + ' '.repeat(width - 2) + '│\n';
+  const bottom = '└' + '─'.repeat(width - 2) + '┘\n';
   return top + middle.repeat(height - 2) + bottom;
 }
 
@@ -226,14 +226,14 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  let inputBase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let outBase =   'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  const inputBase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const outBase =   'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
   let str2 = '';
-  for(let i = 0; i<str.length; i++) {
-    if(str[i] === ' ' || str[i] === '!' || str[i] === '?') {
-      str2 += str[i];
-      continue;
-    }
+    for(let i = 0; i<str.length; i++) {
+      if(str[i] === ' ' || str[i] === '!' || str[i] === '?') {
+        str2 += str[i];
+        continue;
+      }
     for(let j = 0; j<inputBase.length; j++) {
       if(str[i] === inputBase[j]) {
         str2 += outBase[j];
@@ -286,7 +286,7 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
- let arr = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
+ const arr = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
             'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
             'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
             'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠']
