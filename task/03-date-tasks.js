@@ -57,7 +57,7 @@ function parseDataFromIso8601(value) {
  */
 function isLeapYear(date) {
   let year = date.getFullYear();
-  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);  
+  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 }
 
 
@@ -77,34 +77,25 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-  //  console.log(startDate, endDate)
-
-   
-   
-  //  let res = endDate.getTime() - startDate.getTime()
- 
-  //  let date = new Date(res);
+  let duration = endDate-startDate
+  let hours = Math.floor(duration / (3600*1000))
+  if(hours<10) hours = '0' + hours
+  let minutes = Math.floor((duration - (hours*3600*1000))/(60*1000))
+  if(minutes<10) minutes = '0' + minutes
+  let seconds = Math.floor((duration - (hours*3600*1000)-(minutes*60*1000))/1000)
+  if(seconds<10) seconds = '0' + seconds
+  let milliseconds = duration - (hours*3600*1000) - (minutes*60*1000) - (seconds*1000)
+  if( milliseconds<100)  milliseconds = '0' +  milliseconds
+  if( milliseconds<10)  milliseconds = '0' +  milliseconds
   
-  //   var dd = date.getHours();
-  //   if (dd < 10) dd = '0' + dd;
-  
-  //   var mm = date.getMinutes();
-  //   if (mm < 10) mm = '0' + mm;
-  
-  //   var yy = date.getSeconds();
-  //   if (yy < 10) yy = '0' + yy;
-  
-  //   return  dd + '.' + mm + '.' + yy;
-    
-  //  console.log(date);
-  throw new Error('Not implemented');
+  return  `${hours}:${minutes}:${seconds}.${milliseconds}`
 }
 
 
 /**
  * Returns the angle (in radians) between the hands of an analog clock for the specified Greenwich time.
  * If you have problem with solution please read: https://en.wikipedia.org/wiki/Clock_angle_problem
- * 
+ *
  * @param {date} date
  * @return {number}
  *
@@ -115,6 +106,8 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
+  console.log(date)
+  console.log(date.getUTCHours(), date.getMinutes())
     throw new Error('Not implemented');
 }
 
