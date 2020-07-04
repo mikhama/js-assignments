@@ -22,7 +22,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-    return value1 + value2;    
+    return value1 + value2;
 }
 
 
@@ -54,8 +54,8 @@ function getStringLength(value) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(firstName, lastName) {    
-    return 'Hello, '+firstName+' '+lastName + '!'
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`
 }
 
 /**
@@ -68,7 +68,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(value) {  
+function extractNameFromTemplate(value) {
    return value.slice(7,-1);
 }
 
@@ -114,16 +114,12 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    let str = '';    
-    for(let i = 0; i<count; i++) {
-      str +=value;     
-    };    
-    return str;
+    return value.repeat(+count);
 }
 
 /**
  * Remove the first occurrence of string inside another string
- * 
+ *
  * @param {string} str
  * @param {string} value
  * @return {string}
@@ -134,10 +130,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-  var index = str.indexOf(value);
-	if (index === -1) {
-		return str;
-	}
+  const index = str.indexOf(value);
+	if (index === -1) return str;
 	return str.slice(0, index) + str.slice(index + value.length);
 }
 
@@ -209,9 +203,9 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  let top = '┌' + '─'.repeat(width - 2) + '┐\n';
-  let middle = '│' + ' '.repeat(width - 2) + '│\n';
-  let bottom = '└' + '─'.repeat(width - 2) + '┘\n';
+  const top = '┌' + '─'.repeat(width - 2) + '┐\n';
+  const middle = '│' + ' '.repeat(width - 2) + '│\n';
+  const bottom = '└' + '─'.repeat(width - 2) + '┘\n';
   return top + middle.repeat(height - 2) + bottom;
 }
 
@@ -232,21 +226,21 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  let inputBase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let outBase =   'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  const inputBase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const outBase =   'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
   let str2 = '';
-  for(let i = 0; i<str.length; i++) {
-    if(str[i] === ' ' || str[i] === '!' || str[i] === '?') {
-      str2 += str[i];
-      continue;
-    }
+    for(let i = 0; i<str.length; i++) {
+      if(str[i] === ' ' || str[i] === '!' || str[i] === '?') {
+        str2 += str[i];
+        continue;
+      }
     for(let j = 0; j<inputBase.length; j++) {
       if(str[i] === inputBase[j]) {
         str2 += outBase[j];
       }
     }
-  };   
-  return str2;    
+  };
+  return str2;
 }
 
 /**
@@ -262,37 +256,37 @@ function encodeToRot13(str) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(value) {   
+function isString(value) {
     return {}.toString.call(value) === "[object String]"
 }
 
 
 /**
  * Returns playid card id.
- * 
+ *
  * Playing cards inittial deck inclides the cards in the following order:
- * 
+ *
  *  'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
  *  'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
  *  'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
  *  'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'
- * 
+ *
  * (see https://en.wikipedia.org/wiki/Standard_52-card_deck)
  * Function returns the zero-based index of specified card in the initial deck above.
- * 
+ *
  * @param {string} value
  * @return {number}
  *
  * @example
  *   'A♣' => 0
- *   '2♣' => 1 
+ *   '2♣' => 1
  *   '3♣' => 2
  *     ...
  *   'Q♠' => 50
  *   'K♠' => 51
  */
 function getCardId(value) {
- let arr = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
+ const arr = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
             'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
             'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
             'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠']

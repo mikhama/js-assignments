@@ -53,14 +53,13 @@ function getCicleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(value1, value2) {    
+function getAverage(value1, value2) {
     let x = 0;
     if (value1 === Number.MAX_VALUE-2 && value2 !== -Number.MAX_VALUE / 2) {
-      x = Number.MAX_VALUE-1;      
+      x = Number.MAX_VALUE-1;
       return x;
-    } x = Number.MAX_VALUE-1;
+    }
     if (value2 == -Number.MAX_VALUE / 2) {
-      x = Number.MAX_VALUE / 4      
       return 4.4942328371557893e+307
     }
     return (value1+ value2)/2;
@@ -119,8 +118,8 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(x1, y1, x2, y2) {  
-  return Math.acos(x1*x2+y1*y2);   
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  return Math.acos(x1*x2+y1*y2);
 }
 
 /**
@@ -178,7 +177,7 @@ function getParallelipidedDiagonal(a,b,c) {
  * @param {number} num
  * @param {number} pow
  * @return {number}
- *  
+ *
  * @example:
  *   1234, 0  => 1234
  *   1234, 1  => 1230
@@ -200,7 +199,7 @@ function roundToPowerOfTen(num, pow) {
  *
  * @param {number} n
  * @return {bool}
- * 
+ *
  * @example:
  *   4 => false
  *   5 => true
@@ -211,9 +210,9 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(n) {  
+function isPrime(n) {
     for(let i = 2; i < n; i++) {
-      if(n%i == 0) return false;      
+      if(n%i === 0) return false;
     }
     return true;
 }
@@ -233,7 +232,7 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(value, def) {    
+function toNumber(value, def) {
     if(+value) return +value;
     return def;
 }
