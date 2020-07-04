@@ -167,7 +167,7 @@ function insertItem(arr, item, index) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'a', 'b', 'c' ]
  */
 function getHead(arr, n) {
-  return arr.splice(0, n);
+  return arr.slice(0, n);
 }
 
 
@@ -182,7 +182,7 @@ function getHead(arr, n) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
 function getTail(arr, n) {
-  return arr.splice(-n);
+  return arr.slice(-n);
 }
 
 
@@ -207,10 +207,9 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-  // throw new Error('Not implemented');
   for(let i = 0; i<arr.length; i++){
     arr[i] = arr[i].join(',')
-    if(i != arr.length-1){
+    if(i !== arr.length-1){
      arr[i]+='\n';
     }
  }
@@ -301,7 +300,6 @@ function propagateItemsByPositionIndex(arr) {
     }
   }
   return arr2;
-  // throw new Error('Not implemented');
 }
 
 
@@ -364,7 +362,6 @@ function sortDigitNamesByNumericOrder(arr) {
 		}
 	}
   return res;
-  // throw new Error('Not implemented');
 }
 
 /**
@@ -415,7 +412,6 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-  //  throw new Error('Not implemented');
    let count=0;
    for (let index = 0; index < arr.length; index++) {
      if(arr[index]===item){
@@ -497,7 +493,6 @@ function getIdentityMatrix(n) {
 		arr[i][i] = 1;
 	}
   return arr;
-  // throw new Error('Not implemented');
 }
 
 /**
@@ -521,7 +516,6 @@ function getIntervalArray(start, end) {
     current++
   }
   return arr;
-  // throw new Error('Not implemented');
 }
 
 /**
@@ -571,9 +565,15 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-   throw new Error('Not implemented');
+  let map = new Map();
+  array.map((item) => {
+    if(map.has(keySelector(item)))
+      map.set(keySelector(item),[...map.get(keySelector(item)), valueSelector(item)])
+    else
+      map.set(keySelector(item), [valueSelector(item)]);
+  });
+  return map;
 }
-
 
 /**
  * Projects each element of the specified array to a sequence and flattens the resulting sequences into one array.
